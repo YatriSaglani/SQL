@@ -63,7 +63,7 @@ The **Customers** table stores information about customers, including their ID, 
 
 ### 📸 Output Screenshot
 
-![SQL query output showing customer records in a database table, with customer IDs, names, email addresses, and cities; displayed in a database client interface.](screenshors\customers.png)
+![Customer table output](customers.png)
 
 ---
 
@@ -189,12 +189,11 @@ DataDigger/
 │
 ├── DataDigger.txt
 ├── README.md
-│
-└── Screenshots/
-    ├── customers.png
-    ├── orders.jpg
-    ├── products.jpg
-    └── orderDetails.jpg
+├── customers.png
+├── orders.jpg
+├── products.jpg
+└── orderDetails.jpg   
+    
 ```
 
 * **DataDigger.sql** → Contains the SQL commands for database creation, table creation, record insertion, and queries.
