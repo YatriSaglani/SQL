@@ -1,0 +1,205 @@
+==> A. SELECT and WHERE
+
+1. Display all employee records.
+
+= SELECT * FROM Employees;
+
+2. Display employee_name , department and salary only
+ 
+= SELECT Employee Name, Department, Salary FROM Employees;
+
+3.Find all employees in the IT department.
+
+= SELECT * FROM EMPLOYEES WHERE Department = "IT";
+
+4. Find employees with salary greater than 60,000.
+
+= SELECT * FROM EMPLOYEES WHERE Salary > 60000;
+
+5. Find employees with at least 3 years of experience.
+
+= SELECT * FROM EMPLOYEES WHERE Exp. => 3;
+
+6.Find employees working in Rajkot.
+
+= SELECT * FROM EMPLOYEES WHERE City = "Rajkot";
+
+7. Find employees who joined in 2022 or later.
+
+= SELECT * FROM EMPLOYEES WHERE Year => 2022 ; 
+
+8. Find employees whose salary is between 40,000 and 65,000.
+
+= SELECT * FROM EMPLOYEES WHERE Salary BETWEEN 40000 AND 65000;
+
+
+
+
+==> B. AND, OR, NOT
+
+9.Find IT employees whose salary is above 60,000.
+
+= SELECT * FROM EMPLOYEES WHERE Department = "IT" AND Salary > 60000;
+
+10. Find employees from Rajkot or Surat.
+
+= SELECT * FROM EMPLOYEES WHERE City = "Rajkot " OR City = "Surat ";
+
+11. Find employees who are not in Sales.
+
+= SELECT * FROM EMPLOYEES WHERE Department NOT IN ("Sales");
+
+12.Find employees with at least 4 years' experience and salary above 50,000.
+
+= SELECT * FROM EMPLOYEES WHERE Exp.=> 4 AND Salary > 50000;
+
+13.Find HR or Finance employees earning at least 50,000.
+
+= SELECT * FROM EMPLOYEES WHERE Department = "HR" OR Department = "Finance" Salary > 50000;
+
+14. Find employees not from Ahmedabad.
+
+= SELECT * FROM EMPLOYEES WHERE City NOT IN ("Ahmedabad");
+
+
+
+
+==> C. ORDER BY and LIMIT
+
+15. Sort employees by salary from highest to lowest.
+
+= SELECT * FROM EMPLOYEES ORDER BY Salary DESC;
+
+16. Sort employees by name alphabetically.
+
+= SELECT * FROM EMPLOYEES ORDER BY NAME ASC;
+
+17.Display the 5 highest-paid employees.
+
+= SELECT * FROM EMPLOYEES ORDER BY Salary DESC LIMIT 5;
+
+18. Display the 3 lowest-paid employees.
+
+= SELECT * FROM EMPLOYEES ORDER BY Salary ASC LIMIT 3;
+
+19. Display the 5 most recently joined employees.
+
+= SELECT * FROM EMPLOYEES ORDER BY Year DESC LIMIT 5;
+
+
+
+
+==> D. Aggregate Functions
+
+20. Count all employees.
+
+= SELECT COUNT(*) FROM EMPLOYEES;
+
+21.Find the highest salary.
+
+= SELECT MAX(SALARY) FROM EMPLOYEES ; 
+
+22. Find the lowest salary.
+
+= SELECT MIN(SALARY) FROM EMPLOYEES ;
+
+23.Calculate average salary.
+
+= SELECT AVG(SALARY) FROM EMPLOYEES ;
+
+24.Calculate the total of all salaries.
+
+= SELECT SUM(SALARY) FROM EMPLOYEES ;
+
+25.Find average experience.
+
+= SELECT AVG(EXP.) FROM EMPLOYEES ;
+
+
+
+
+==>E. GROUP BY
+
+26. Count employees in each department.
+
+= SELECT DEPARTMENT , COUNT(*) FROM EMPLOYEES GROUP BY DEPARTMENT ;
+
+27.Find average salary for each department.
+
+= SELECT DEPARTMENT , AVG(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT ;
+
+28. Find maximum salary in each department.
+
+= SELECT DEPARTMENT , MAX(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT ;
+
+29.Find minimum salary in each city.
+
+= SELECT CITY , MIN(SALARY) FROM EMPLOYEES GROUP BY CITY ;
+
+30.Calculate total salary for each department.
+
+= SELECT DEPARTMENT , SUM(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT ;
+
+31.Count employees in each city
+
+= SELECT CITY, COUNT(*) FROM EMPLOYEES GROUP BY CITY ;
+
+
+
+
+==>F. HAVING
+
+32.Show departments with more than 3 employees.
+
+= SELECT DEPARTMENT , COUNT(*) FROM EMPLOYEES GROUP BY DEPARTMENT HAVING COUNT (*) > 3;
+
+33.Show departments whose average salary exceeds 55,000.
+
+SELECT DEPARTMENT , AVG(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT HAVING AVG(SALARY) > 55000;
+
+34. Show cities with at least 4 employees.
+
+= SELECT CITY , COUNT(*) FROM EMPLOYEES GROUP BY CITY HAVING COUNT (*) => 4;
+
+35. Show departments whose total salary exceeds 150,000.
+
+= SELECT DEPARTMENT , SUM(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT HAVING SUM(SALARY) > 150000;
+
+
+
+
+==>G. Combined Queries
+
+36.Show the 3 departments with the highest average salary.
+
+= SELECT DEPARTMENT , AVG(SALARY) FROM EMPLOYEES GROUP BY DEPARTMENT ORDER BY AVG(SALARY) DESC LIMIT 3;
+
+37.Show department-wise employee count, highest count first.
+
+= SELECT DEPARTMENT , COUNT (*) AS EMP_COUNT FROM EMPLOYEES GROUP DEPARTMENT ORDER BY EMP_COUNT DESC;
+
+38.Show cities with average salary above 50,000, highest average first.
+
+= SELECT CITY , AVG(SALARY) AS AVG_SALARY FROM EMPLOYEES GROUP BY CITY HAVING AVG(SALARY) > 50000 ORDER BY AVG_SALARY DESC;
+
+39.Find departments with more than 2 employees and average salary above 45,000.
+
+= SELECT DEPARTMENT , COUNT(*) AS EMP_COUNT , AVG(SALARY) AS AVG_SALARY FROM EMPLOYEES GROUP BY DEPARTMENT HAVING COUNT(*) 2 AND AVG(SALARY) > 45000;
+
+40. Display the 5 highest-paid IT employees.
+
+= SELECT * FROM EMPLOYEES WHERE DEPARTMENT = "IT" ORDER BY SALARY DESC LIMIT 5;
+
+41.Find employees from Rajkot or Surat earning above 45,000, sorted by salary descending.
+
+= SELECT * FROM EMPLOYEES WHERE CITY IN ("RAJKOT","SURAT") AND SALARY > 45000 ORDER BY SALARY DESC;
+
+42. Show department-wise count and average salary only for departments averaging above 45,000.
+
+= SELECT DEPARTMENT , COUNT(*) AS EMP_COUNT, AVG(SALARY) AS AVG_SALARY FROM EMPLOYEES GROUP BY DEPARTMENT HAVING AVG (SALARY) > 45000;
+
+43.Show departments whose minimum salary exceeds 40,000, sorted by minimum salary ascending.
+
+= SELECT DEPARTMENT , MIN (SALARY) AS MIN_SALARY FROM EMPLOYEES GROUP BY DEPARTMENT HAVING MIN(SALARY) > 40000 ORDER BY MIN_SALARY ASC;
+
+

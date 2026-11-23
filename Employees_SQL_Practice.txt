@@ -1,0 +1,1576 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 34
+Server version: 8.0.46 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE PRACTICE_DB;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> USE PRACTICE_DB;
+Database changed
+mysql> USE PRACTICE_DB;
+Database changed
+mysql> CREATE TABLE EMPLOYEES (
+    ->     id INT PRIMARY KEY,
+    ->     name VARCHAR(50),
+    ->     age INT,
+    ->     city VARCHAR(50),
+    ->     department VARCHAR(50),
+    ->     salary DECIMAL(10,2),
+    ->     experience INT
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> DESCRIBE EMPLOYEES;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| id         | int           | NO   | PRI | NULL    |       |
+| name       | varchar(50)   | YES  |     | NULL    |       |
+| age        | int           | YES  |     | NULL    |       |
+| city       | varchar(50)   | YES  |     | NULL    |       |
+| department | varchar(50)   | YES  |     | NULL    |       |
+| salary     | decimal(10,2) | YES  |     | NULL    |       |
+| experience | int           | YES  |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+7 rows in set (0.03 sec)
+
+mysql> INSERT INTO EMPLOYEES VALUES
+    -> (1, 'Rahul', 25, 'Rajkot', 'IT', 35000, 2),
+    -> (2, 'Priya', 28, 'Ahmedabad', 'HR', 40000, 4),
+    -> (3, 'Amit', 24, 'Surat', 'IT', 30000, 1),
+    -> (4, 'Neha', 30, 'Vadodara', 'Finance', 45000, 5),
+    -> (5, 'Karan', 26, 'Rajkot', 'Sales', 28000, 3),
+    -> (6, 'Pooja', 29, 'Surat', 'IT', 50000, 6),
+    -> (7, 'Vikas', 32, 'Ahmedabad', 'Sales', 32000, 7),
+    -> (8, 'Sneha', 27, 'Rajkot', 'HR', 42000, 4),
+    -> (9, 'Rohit', 31, 'Vadodara', 'IT', 38000, 5),
+    -> (10, 'Anjali', 25, 'Surat', 'Finance', 48000, 2),
+    -> (11, 'Manish', 29, 'Ahmedabad', 'HR', 36000, 6),
+    -> (12, 'Kavita', 23, 'Rajkot', 'IT', 27000, 1),
+    -> (13, 'Deepak', 35, 'Vadodara', 'Sales', 25000, 8),
+    -> (14, 'Riya', 26, 'Surat', 'Finance', 55000, 3),
+    -> (15, 'Nikhil', 33, 'Ahmedabad', 'IT', 46000, 9),
+    -> (16, 'Meera', 28, 'Rajkot', 'Sales', 31000, 4),
+    -> (17, 'Sahil', 24, 'Vadodara', 'HR', 29000, 2),
+    -> (18, 'Komal', 27, 'Surat', 'IT', 44000, 5),
+    -> (19, 'Harsh', 30, 'Ahmedabad', 'Finance', 39000, 7),
+    -> (20, 'Divya', 32, 'Rajkot', 'HR', 52000, 10);
+Query OK, 20 rows affected (0.02 sec)
+Records: 20  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEES;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT NAME, SALARY FROM EMPLOYEES;
++--------+----------+
+| NAME   | SALARY   |
++--------+----------+
+| Rahul  | 35000.00 |
+| Priya  | 40000.00 |
+| Amit   | 30000.00 |
+| Neha   | 45000.00 |
+| Karan  | 28000.00 |
+| Pooja  | 50000.00 |
+| Vikas  | 32000.00 |
+| Sneha  | 42000.00 |
+| Rohit  | 38000.00 |
+| Anjali | 48000.00 |
+| Manish | 36000.00 |
+| Kavita | 27000.00 |
+| Deepak | 25000.00 |
+| Riya   | 55000.00 |
+| Nikhil | 46000.00 |
+| Meera  | 31000.00 |
+| Sahil  | 29000.00 |
+| Komal  | 44000.00 |
+| Harsh  | 39000.00 |
+| Divya  | 52000.00 |
++--------+----------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE SALARY > 40000;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE AGE < 28;
++----+--------+------+----------+------------+----------+------------+
+| id | name   | age  | city     | department | salary   | experience |
++----+--------+------+----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot   | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat    | IT         | 30000.00 |          1 |
+|  5 | Karan  |   26 | Rajkot   | Sales      | 28000.00 |          3 |
+|  8 | Sneha  |   27 | Rajkot   | HR         | 42000.00 |          4 |
+| 10 | Anjali |   25 | Surat    | Finance    | 48000.00 |          2 |
+| 12 | Kavita |   23 | Rajkot   | IT         | 27000.00 |          1 |
+| 14 | Riya   |   26 | Surat    | Finance    | 55000.00 |          3 |
+| 17 | Sahil  |   24 | Vadodara | HR         | 29000.00 |          2 |
+| 18 | Komal  |   27 | Surat    | IT         | 44000.00 |          5 |
++----+--------+------+----------+------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE DEPARTMENT = 'IT';
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
++----+--------+------+-----------+------------+----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE CITY = 'RAJKOT';
++----+--------+------+--------+------------+----------+------------+
+| id | name   | age  | city   | department | salary   | experience |
++----+--------+------+--------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot | IT         | 35000.00 |          2 |
+|  5 | Karan  |   26 | Rajkot | Sales      | 28000.00 |          3 |
+|  8 | Sneha  |   27 | Rajkot | HR         | 42000.00 |          4 |
+| 12 | Kavita |   23 | Rajkot | IT         | 27000.00 |          1 |
+| 16 | Meera  |   28 | Rajkot | Sales      | 31000.00 |          4 |
+| 20 | Divya  |   32 | Rajkot | HR         | 52000.00 |         10 |
++----+--------+------+--------+------------+----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE EXPERIENCE >= 5;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+10 rows in set (0.01 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE SALARY = 30000;
++----+------+------+-------+------------+----------+------------+
+| id | name | age  | city  | department | salary   | experience |
++----+------+------+-------+------------+----------+------------+
+|  3 | Amit |   24 | Surat | IT         | 30000.00 |          1 |
++----+------+------+-------+------------+----------+------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE DEPARTMENT != 'HR';
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
++----+--------+------+-----------+------------+----------+------------+
+15 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE AGE BETWEEN 25 AND 30;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
++----+--------+------+-----------+------------+----------+------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE SALARY > 35000 AND AGE > 25;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE CITY = 'RAJKOT' OR CITY = 'SURAT';
++----+--------+------+--------+------------+----------+------------+
+| id | name   | age  | city   | department | salary   | experience |
++----+--------+------+--------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat  | IT         | 30000.00 |          1 |
+|  5 | Karan  |   26 | Rajkot | Sales      | 28000.00 |          3 |
+|  6 | Pooja  |   29 | Surat  | IT         | 50000.00 |          6 |
+|  8 | Sneha  |   27 | Rajkot | HR         | 42000.00 |          4 |
+| 10 | Anjali |   25 | Surat  | Finance    | 48000.00 |          2 |
+| 12 | Kavita |   23 | Rajkot | IT         | 27000.00 |          1 |
+| 14 | Riya   |   26 | Surat  | Finance    | 55000.00 |          3 |
+| 16 | Meera  |   28 | Rajkot | Sales      | 31000.00 |          4 |
+| 18 | Komal  |   27 | Surat  | IT         | 44000.00 |          5 |
+| 20 | Divya  |   32 | Rajkot | HR         | 52000.00 |         10 |
++----+--------+------+--------+------------+----------+------------+
+11 rows in set (0.00 sec)
+
+mysql>  SELECT * FROM EMPLOYEES
+    -> WHERE DEPARTMENT = 'IT' AND SALARY > 40000;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
++----+--------+------+-----------+------------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE CITY != 'AHMEDABAD';
++----+--------+------+----------+------------+----------+------------+
+| id | name   | age  | city     | department | salary   | experience |
++----+--------+------+----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot   | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat    | IT         | 30000.00 |          1 |
+|  4 | Neha   |   30 | Vadodara | Finance    | 45000.00 |          5 |
+|  5 | Karan  |   26 | Rajkot   | Sales      | 28000.00 |          3 |
+|  6 | Pooja  |   29 | Surat    | IT         | 50000.00 |          6 |
+|  8 | Sneha  |   27 | Rajkot   | HR         | 42000.00 |          4 |
+|  9 | Rohit  |   31 | Vadodara | IT         | 38000.00 |          5 |
+| 10 | Anjali |   25 | Surat    | Finance    | 48000.00 |          2 |
+| 12 | Kavita |   23 | Rajkot   | IT         | 27000.00 |          1 |
+| 13 | Deepak |   35 | Vadodara | Sales      | 25000.00 |          8 |
+| 14 | Riya   |   26 | Surat    | Finance    | 55000.00 |          3 |
+| 16 | Meera  |   28 | Rajkot   | Sales      | 31000.00 |          4 |
+| 17 | Sahil  |   24 | Vadodara | HR         | 29000.00 |          2 |
+| 18 | Komal  |   27 | Surat    | IT         | 44000.00 |          5 |
+| 20 | Divya  |   32 | Rajkot   | HR         | 52000.00 |         10 |
++----+--------+------+----------+------------+----------+------------+
+15 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE SALARY > 45000 OR EXPERIENCE > 7;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE DEPARTMENT != 'IT' AND SALARY > 30000;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE AGE BETWEEN 25 AND 30 AND SALARY > 35000;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
++----+--------+------+-----------+------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE CITY = 'RAJKOT' OR DEPARTMENT = 'FINANCE';
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE DEPARTMENT != 'HR' AND DEPARTMENT != 'SALES';
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
++----+--------+------+-----------+------------+----------+------------+
+11 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE SALARY < 30000 OR AGE > 30;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
++----+--------+------+-----------+------------+----------+------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY NAME ASC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY NAME DESC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY SALARY ASC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY SALARY DESC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY AGE ASC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY EXPERIENCE DESC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY DEPARTMENT ASC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY SALARY DESC, AGE ASC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+| 19 | Harsh  |   30 | Ahmedabad | Finance    | 39000.00 |          7 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 11 | Manish |   29 | Ahmedabad | HR         | 36000.00 |          6 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+| 16 | Meera  |   28 | Rajkot    | Sales      | 31000.00 |          4 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+| 17 | Sahil  |   24 | Vadodara  | HR         | 29000.00 |          2 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
++----+--------+------+-----------+------------+----------+------------+
+20 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE CITY = 'RAJKOT'
+    -> ORDER BY SALARY DESC;
++----+--------+------+--------+------------+----------+------------+
+| id | name   | age  | city   | department | salary   | experience |
++----+--------+------+--------+------------+----------+------------+
+| 20 | Divya  |   32 | Rajkot | HR         | 52000.00 |         10 |
+|  8 | Sneha  |   27 | Rajkot | HR         | 42000.00 |          4 |
+|  1 | Rahul  |   25 | Rajkot | IT         | 35000.00 |          2 |
+| 16 | Meera  |   28 | Rajkot | Sales      | 31000.00 |          4 |
+|  5 | Karan  |   26 | Rajkot | Sales      | 28000.00 |          3 |
+| 12 | Kavita |   23 | Rajkot | IT         | 27000.00 |          1 |
++----+--------+------+--------+------------+----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE DEPARTMENT = 'IT'
+    -> ORDER BY EXPERIENCE DESC;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+| 12 | Kavita |   23 | Rajkot    | IT         | 27000.00 |          1 |
++----+--------+------+-----------+------------+----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> LIMIT 5;
++----+-------+------+-----------+------------+----------+------------+
+| id | name  | age  | city      | department | salary   | experience |
++----+-------+------+-----------+------------+----------+------------+
+|  1 | Rahul |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  2 | Priya |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  3 | Amit  |   24 | Surat     | IT         | 30000.00 |          1 |
+|  4 | Neha  |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  5 | Karan |   26 | Rajkot    | Sales      | 28000.00 |          3 |
++----+-------+------+-----------+------------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> LIMIT 10;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  1 | Rahul  |   25 | Rajkot    | IT         | 35000.00 |          2 |
+|  2 | Priya  |   28 | Ahmedabad | HR         | 40000.00 |          4 |
+|  3 | Amit   |   24 | Surat     | IT         | 30000.00 |          1 |
+|  4 | Neha   |   30 | Vadodara  | Finance    | 45000.00 |          5 |
+|  5 | Karan  |   26 | Rajkot    | Sales      | 28000.00 |          3 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+|  7 | Vikas  |   32 | Ahmedabad | Sales      | 32000.00 |          7 |
+|  8 | Sneha  |   27 | Rajkot    | HR         | 42000.00 |          4 |
+|  9 | Rohit  |   31 | Vadodara  | IT         | 38000.00 |          5 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
++----+--------+------+-----------+------------+----------+------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY SALARY DESC
+    -> LIMIT 3;
++----+-------+------+--------+------------+----------+------------+
+| id | name  | age  | city   | department | salary   | experience |
++----+-------+------+--------+------------+----------+------------+
+| 14 | Riya  |   26 | Surat  | Finance    | 55000.00 |          3 |
+| 20 | Divya |   32 | Rajkot | HR         | 52000.00 |         10 |
+|  6 | Pooja |   29 | Surat  | IT         | 50000.00 |          6 |
++----+-------+------+--------+------------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY SALARY ASC
+    -> LIMIT 5;
++----+--------+------+----------+------------+----------+------------+
+| id | name   | age  | city     | department | salary   | experience |
++----+--------+------+----------+------------+----------+------------+
+| 13 | Deepak |   35 | Vadodara | Sales      | 25000.00 |          8 |
+| 12 | Kavita |   23 | Rajkot   | IT         | 27000.00 |          1 |
+|  5 | Karan  |   26 | Rajkot   | Sales      | 28000.00 |          3 |
+| 17 | Sahil  |   24 | Vadodara | HR         | 29000.00 |          2 |
+|  3 | Amit   |   24 | Surat    | IT         | 30000.00 |          1 |
++----+--------+------+----------+------------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY AGE ASC
+    -> LIMIT 5;
++----+--------+------+----------+------------+----------+------------+
+| id | name   | age  | city     | department | salary   | experience |
++----+--------+------+----------+------------+----------+------------+
+| 12 | Kavita |   23 | Rajkot   | IT         | 27000.00 |          1 |
+|  3 | Amit   |   24 | Surat    | IT         | 30000.00 |          1 |
+| 17 | Sahil  |   24 | Vadodara | HR         | 29000.00 |          2 |
+|  1 | Rahul  |   25 | Rajkot   | IT         | 35000.00 |          2 |
+| 10 | Anjali |   25 | Surat    | Finance    | 48000.00 |          2 |
++----+--------+------+----------+------------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> ORDER BY EXPERIENCE DESC
+    -> LIMIT 3;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 13 | Deepak |   35 | Vadodara  | Sales      | 25000.00 |          8 |
++----+--------+------+-----------+------------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT NAME, SALARY FROM EMPLOYEES
+    -> ORDER BY SALARY DESC
+    -> LIMIT 5;
++--------+----------+
+| NAME   | SALARY   |
++--------+----------+
+| Riya   | 55000.00 |
+| Divya  | 52000.00 |
+| Pooja  | 50000.00 |
+| Anjali | 48000.00 |
+| Nikhil | 46000.00 |
++--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE DEPARTMENT = 'IT'
+    -> ORDER BY SALARY DESC
+    -> LIMIT 3;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
+| 18 | Komal  |   27 | Surat     | IT         | 44000.00 |          5 |
++----+--------+------+-----------+------------+----------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE SALARY > 35000
+    -> ORDER BY SALARY DESC
+    -> LIMIT 5;
++----+--------+------+-----------+------------+----------+------------+
+| id | name   | age  | city      | department | salary   | experience |
++----+--------+------+-----------+------------+----------+------------+
+| 14 | Riya   |   26 | Surat     | Finance    | 55000.00 |          3 |
+| 20 | Divya  |   32 | Rajkot    | HR         | 52000.00 |         10 |
+|  6 | Pooja  |   29 | Surat     | IT         | 50000.00 |          6 |
+| 10 | Anjali |   25 | Surat     | Finance    | 48000.00 |          2 |
+| 15 | Nikhil |   33 | Ahmedabad | IT         | 46000.00 |          9 |
++----+--------+------+-----------+------------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEES
+    -> WHERE CITY = 'RAJKOT'
+    -> ORDER BY SALARY ASC
+    -> LIMIT 2;
++----+--------+------+--------+------------+----------+------------+
+| id | name   | age  | city   | department | salary   | experience |
++----+--------+------+--------+------------+----------+------------+
+| 12 | Kavita |   23 | Rajkot | IT         | 27000.00 |          1 |
+|  5 | Karan  |   26 | Rajkot | Sales      | 28000.00 |          3 |
++----+--------+------+--------+------------+----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM EMPLOYEES;
++----------+
+| COUNT(*) |
++----------+
+|       20 |
++----------+
+1 row in set (0.02 sec)
+
+mysql> SELECT COUNT(NAME) FROM EMPLOYEES;
++-------------+
+| COUNT(NAME) |
++-------------+
+|          20 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(SALARY) FROM EMPLOYEES;
++-------------+
+| SUM(SALARY) |
++-------------+
+|   772000.00 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT AVG(SALARY) FROM EMPLOYEES;
++--------------+
+| AVG(SALARY)  |
++--------------+
+| 38600.000000 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(SALARY) FROM EMPLOYEES;
++-------------+
+| MAX(SALARY) |
++-------------+
+|    55000.00 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT MIN(SALARY) FROM EMPLOYEES;
++-------------+
+| MIN(SALARY) |
++-------------+
+|    25000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(EXPERIENCE) FROM EMPLOYEES;
++-----------------+
+| MAX(EXPERIENCE) |
++-----------------+
+|              10 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(AGE) FROM EMPLOYEES;
++----------+
+| AVG(AGE) |
++----------+
+|  28.2000 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT SUM(SALARY) FROM EMPLOYEES
+    -> WHERE CITY = 'RAJKOT';
++-------------+
+| SUM(SALARY) |
++-------------+
+|   215000.00 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT AVG(SALARY) FROM EMPLOYEES
+    -> WHERE DEPARTMENT = 'IT';
++--------------+
+| AVG(SALARY)  |
++--------------+
+| 38571.428571 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(SALARY) FROM EMPLOYEES
+    -> WHERE DEPARTMENT = 'HR';
++-------------+
+| MAX(SALARY) |
++-------------+
+|    52000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MIN(SALARY) FROM EMPLOYEES
+    -> WHERE AGE > 28;
++-------------+
+| MIN(SALARY) |
++-------------+
+|    25000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM EMPLOYEES
+    -> WHERE SALARY > 40000;
++----------+
+| COUNT(*) |
++----------+
+|        8 |
++----------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT SUM(EXPERIENCE) FROM EMPLOYEES;
++-----------------+
+| SUM(EXPERIENCE) |
++-----------------+
+|              94 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(SALARY) FROM EMPLOYEES
+    -> WHERE CITY = 'SURAT';
++--------------+
+| AVG(SALARY)  |
++--------------+
+| 45400.000000 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT;
++------------+----------+
+| DEPARTMENT | COUNT(*) |
++------------+----------+
+| IT         |        7 |
+| HR         |        5 |
+| Finance    |        4 |
+| Sales      |        4 |
++------------+----------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT CITY, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY;
++-----------+----------+
+| CITY      | COUNT(*) |
++-----------+----------+
+| Rajkot    |        6 |
+| Ahmedabad |        5 |
+| Surat     |        5 |
+| Vadodara  |        4 |
++-----------+----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   270000.00 |
+| HR         |   199000.00 |
+| Finance    |   187000.00 |
+| Sales      |   116000.00 |
++------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT;
++------------+--------------+
+| DEPARTMENT | AVG(SALARY)  |
++------------+--------------+
+| IT         | 38571.428571 |
+| HR         | 39800.000000 |
+| Finance    | 46750.000000 |
+| Sales      | 29000.000000 |
++------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, MAX(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT;
++------------+-------------+
+| DEPARTMENT | MAX(SALARY) |
++------------+-------------+
+| IT         |    50000.00 |
+| HR         |    52000.00 |
+| Finance    |    55000.00 |
+| Sales      |    32000.00 |
++------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, MIN(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT;
++------------+-------------+
+| DEPARTMENT | MIN(SALARY) |
++------------+-------------+
+| IT         |    27000.00 |
+| HR         |    29000.00 |
+| Finance    |    39000.00 |
+| Sales      |    25000.00 |
++------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(EXPERIENCE)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT;
++------------+-----------------+
+| DEPARTMENT | SUM(EXPERIENCE) |
++------------+-----------------+
+| IT         |              29 |
+| HR         |              26 |
+| Finance    |              17 |
+| Sales      |              22 |
++------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT AGE, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY AGE;
++------+----------+
+| AGE  | COUNT(*) |
++------+----------+
+|   25 |        2 |
+|   28 |        2 |
+|   24 |        2 |
+|   30 |        2 |
+|   26 |        2 |
+|   29 |        2 |
+|   32 |        2 |
+|   27 |        2 |
+|   31 |        1 |
+|   23 |        1 |
+|   35 |        1 |
+|   33 |        1 |
++------+----------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT CITY, DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY, DEPARTMENT;
++-----------+------------+-------------+
+| CITY      | DEPARTMENT | SUM(SALARY) |
++-----------+------------+-------------+
+| Rajkot    | IT         |    62000.00 |
+| Ahmedabad | HR         |    76000.00 |
+| Surat     | IT         |   124000.00 |
+| Vadodara  | Finance    |    45000.00 |
+| Rajkot    | Sales      |    59000.00 |
+| Ahmedabad | Sales      |    32000.00 |
+| Rajkot    | HR         |    94000.00 |
+| Vadodara  | IT         |    38000.00 |
+| Surat     | Finance    |   103000.00 |
+| Vadodara  | Sales      |    25000.00 |
+| Ahmedabad | IT         |    46000.00 |
+| Vadodara  | HR         |    29000.00 |
+| Ahmedabad | Finance    |    39000.00 |
++-----------+------------+-------------+
+13 rows in set (0.00 sec)
+
+mysql> SELECT CITY, DEPARTMENT, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY, DEPARTMENT;
++-----------+------------+----------+
+| CITY      | DEPARTMENT | COUNT(*) |
++-----------+------------+----------+
+| Rajkot    | IT         |        2 |
+| Ahmedabad | HR         |        2 |
+| Surat     | IT         |        3 |
+| Vadodara  | Finance    |        1 |
+| Rajkot    | Sales      |        2 |
+| Ahmedabad | Sales      |        1 |
+| Rajkot    | HR         |        2 |
+| Vadodara  | IT         |        1 |
+| Surat     | Finance    |        2 |
+| Vadodara  | Sales      |        1 |
+| Ahmedabad | IT         |        1 |
+| Vadodara  | HR         |        1 |
+| Ahmedabad | Finance    |        1 |
++-----------+------------+----------+
+13 rows in set (0.00 sec)
+
+mysql> SELECT CITY, AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY;
++-----------+--------------+
+| CITY      | AVG(SALARY)  |
++-----------+--------------+
+| Rajkot    | 35833.333333 |
+| Ahmedabad | 38600.000000 |
+| Surat     | 45400.000000 |
+| Vadodara  | 34250.000000 |
++-----------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, MAX(EXPERIENCE)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT;
++------------+-----------------+
+| DEPARTMENT | MAX(EXPERIENCE) |
++------------+-----------------+
+| IT         |               9 |
+| HR         |              10 |
+| Finance    |               7 |
+| Sales      |               8 |
++------------+-----------------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> ORDER BY SUM(SALARY) DESC;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   270000.00 |
+| HR         |   199000.00 |
+| Finance    |   187000.00 |
+| Sales      |   116000.00 |
++------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> ORDER BY COUNT(*) DESC;
++------------+----------+
+| DEPARTMENT | COUNT(*) |
++------------+----------+
+| IT         |        7 |
+| HR         |        5 |
+| Finance    |        4 |
+| Sales      |        4 |
++------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT CITY, AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY
+    -> ORDER BY AVG(SALARY) DESC;
++-----------+--------------+
+| CITY      | AVG(SALARY)  |
++-----------+--------------+
+| Surat     | 45400.000000 |
+| Ahmedabad | 38600.000000 |
+| Rajkot    | 35833.333333 |
+| Vadodara  | 34250.000000 |
++-----------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING COUNT(*) > 4;
++------------+----------+
+| DEPARTMENT | COUNT(*) |
++------------+----------+
+| IT         |        7 |
+| HR         |        5 |
++------------+----------+
+2 rows in set (0.01 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING SUM(SALARY) > 150000;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   270000.00 |
+| HR         |   199000.00 |
+| Finance    |   187000.00 |
++------------+-------------+
+3 rows in set (0.01 sec)
+
+mysql> SELECT DEPARTMENT, AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING AVG(SALARY) > 40000;
++------------+--------------+
+| DEPARTMENT | AVG(SALARY)  |
++------------+--------------+
+| Finance    | 46750.000000 |
++------------+--------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, MAX(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING MAX(SALARY) > 45000;
++------------+-------------+
+| DEPARTMENT | MAX(SALARY) |
++------------+-------------+
+| IT         |    50000.00 |
+| HR         |    52000.00 |
+| Finance    |    55000.00 |
++------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, MIN(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING MIN(SALARY) < 30000;
++------------+-------------+
+| DEPARTMENT | MIN(SALARY) |
++------------+-------------+
+| IT         |    27000.00 |
+| HR         |    29000.00 |
+| Sales      |    25000.00 |
++------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT CITY, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY
+    -> HAVING COUNT(*) > 4;
++-----------+----------+
+| CITY      | COUNT(*) |
++-----------+----------+
+| Rajkot    |        6 |
+| Ahmedabad |        5 |
+| Surat     |        5 |
++-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT CITY, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY
+    -> HAVING SUM(SALARY) > 150000;
++-----------+-------------+
+| CITY      | SUM(SALARY) |
++-----------+-------------+
+| Rajkot    |   215000.00 |
+| Ahmedabad |   193000.00 |
+| Surat     |   227000.00 |
++-----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, AVG(EXPERIENCE)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING AVG(EXPERIENCE) > 5;
++------------+-----------------+
+| DEPARTMENT | AVG(EXPERIENCE) |
++------------+-----------------+
+| HR         |          5.2000 |
+| Sales      |          5.5000 |
++------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(EXPERIENCE)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING SUM(EXPERIENCE) > 15;
++------------+-----------------+
+| DEPARTMENT | SUM(EXPERIENCE) |
++------------+-----------------+
+| IT         |              29 |
+| HR         |              26 |
+| Finance    |              17 |
+| Sales      |              22 |
++------------+-----------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*), AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING COUNT(*) >= 3 AND AVG(SALARY) > 35000;
++------------+----------+--------------+
+| DEPARTMENT | COUNT(*) | AVG(SALARY)  |
++------------+----------+--------------+
+| IT         |        7 | 38571.428571 |
+| HR         |        5 | 39800.000000 |
+| Finance    |        4 | 46750.000000 |
++------------+----------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> WHERE SALARY > 35000
+    -> GROUP BY DEPARTMENT;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| HR         |   170000.00 |
+| Finance    |   187000.00 |
+| IT         |   178000.00 |
++------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*)
+    -> FROM EMPLOYEES
+    -> WHERE AGE > 25
+    -> GROUP BY DEPARTMENT;
++------------+----------+
+| DEPARTMENT | COUNT(*) |
++------------+----------+
+| HR         |        4 |
+| Finance    |        3 |
+| Sales      |        4 |
+| IT         |        4 |
++------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> WHERE EXPERIENCE >= 3
+    -> GROUP BY DEPARTMENT;
++------------+--------------+
+| DEPARTMENT | AVG(SALARY)  |
++------------+--------------+
+| HR         | 42500.000000 |
+| Finance    | 46333.333333 |
+| Sales      | 29000.000000 |
+| IT         | 44500.000000 |
++------------+--------------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> WHERE SALARY > 30000
+    -> GROUP BY DEPARTMENT
+    -> HAVING SUM(SALARY) > 100000;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   213000.00 |
+| HR         |   170000.00 |
+| Finance    |   187000.00 |
++------------+-------------+
+3 rows in set (0.01 sec)
+
+mysql> SELECT CITY, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> WHERE AGE > 25
+    -> GROUP BY CITY;
++-----------+-------------+
+| CITY      | SUM(SALARY) |
++-----------+-------------+
+| Ahmedabad |   193000.00 |
+| Vadodara  |   108000.00 |
+| Rajkot    |   153000.00 |
+| Surat     |   149000.00 |
++-----------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*)
+    -> FROM EMPLOYEES
+    -> WHERE SALARY > 30000
+    -> GROUP BY DEPARTMENT
+    -> HAVING COUNT(*) > 2;
++------------+----------+
+| DEPARTMENT | COUNT(*) |
++------------+----------+
+| IT         |        5 |
+| HR         |        4 |
+| Finance    |        4 |
++------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> WHERE CITY = 'RAJKOT' OR CITY = 'SURAT'
+    -> GROUP BY DEPARTMENT;
++------------+--------------+
+| DEPARTMENT | AVG(SALARY)  |
++------------+--------------+
+| IT         | 37200.000000 |
+| Sales      | 29500.000000 |
+| HR         | 47000.000000 |
+| Finance    | 51500.000000 |
++------------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT CITY, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> WHERE EXPERIENCE > 3
+    -> GROUP BY CITY
+    -> HAVING SUM(SALARY) > 50000;
++-----------+-------------+
+| CITY      | SUM(SALARY) |
++-----------+-------------+
+| Ahmedabad |   193000.00 |
+| Vadodara  |   108000.00 |
+| Surat     |    94000.00 |
+| Rajkot    |   125000.00 |
++-----------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> WHERE AGE < 30
+    -> GROUP BY DEPARTMENT
+    -> HAVING SUM(SALARY) > 50000;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   186000.00 |
+| HR         |   147000.00 |
+| Sales      |    59000.00 |
+| Finance    |   103000.00 |
++------------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*)
+    -> FROM EMPLOYEES
+    -> WHERE SALARY > 35000
+    -> GROUP BY DEPARTMENT
+    -> HAVING COUNT(*) >= 2;
++------------+----------+
+| DEPARTMENT | COUNT(*) |
++------------+----------+
+| HR         |        4 |
+| Finance    |        4 |
+| IT         |        4 |
++------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> ORDER BY SUM(SALARY) DESC
+    -> LIMIT 3;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   270000.00 |
+| HR         |   199000.00 |
+| Finance    |   187000.00 |
++------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> ORDER BY AVG(SALARY) ASC
+    -> LIMIT 2;
++------------+--------------+
+| DEPARTMENT | AVG(SALARY)  |
++------------+--------------+
+| Sales      | 29000.000000 |
+| IT         | 38571.428571 |
++------------+--------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT CITY, COUNT(*)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY
+    -> ORDER BY COUNT(*) DESC
+    -> LIMIT 3;
++-----------+----------+
+| CITY      | COUNT(*) |
++-----------+----------+
+| Rajkot    |        6 |
+| Ahmedabad |        5 |
+| Surat     |        5 |
++-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*), AVG(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING COUNT(*) > 2
+    -> ORDER BY AVG(SALARY) DESC;
++------------+----------+--------------+
+| DEPARTMENT | COUNT(*) | AVG(SALARY)  |
++------------+----------+--------------+
+| Finance    |        4 | 46750.000000 |
+| HR         |        5 | 39800.000000 |
+| IT         |        7 | 38571.428571 |
+| Sales      |        4 | 29000.000000 |
++------------+----------+--------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> ORDER BY SUM(SALARY) DESC
+    -> LIMIT 1;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   270000.00 |
++------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, MAX(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> ORDER BY MAX(SALARY) DESC
+    -> LIMIT 2;
++------------+-------------+
+| DEPARTMENT | MAX(SALARY) |
++------------+-------------+
+| Finance    |    55000.00 |
+| HR         |    52000.00 |
++------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT CITY, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY CITY
+    -> ORDER BY SUM(SALARY) ASC
+    -> LIMIT 3;
++-----------+-------------+
+| CITY      | SUM(SALARY) |
++-----------+-------------+
+| Vadodara  |   137000.00 |
+| Ahmedabad |   193000.00 |
+| Rajkot    |   215000.00 |
++-----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, AVG(EXPERIENCE)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> ORDER BY AVG(EXPERIENCE) DESC
+    -> LIMIT 2;
++------------+-----------------+
+| DEPARTMENT | AVG(EXPERIENCE) |
++------------+-----------------+
+| Sales      |          5.5000 |
+| HR         |          5.2000 |
++------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, COUNT(*), SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING COUNT(*) > 2
+    -> ORDER BY SUM(SALARY) DESC
+    -> LIMIT 2;
++------------+----------+-------------+
+| DEPARTMENT | COUNT(*) | SUM(SALARY) |
++------------+----------+-------------+
+| IT         |        7 |   270000.00 |
+| HR         |        5 |   199000.00 |
++------------+----------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT DEPARTMENT, SUM(SALARY)
+    -> FROM EMPLOYEES
+    -> GROUP BY DEPARTMENT
+    -> HAVING SUM(SALARY) > 100000
+    -> ORDER BY SUM(SALARY) DESC
+    -> LIMIT 2;
++------------+-------------+
+| DEPARTMENT | SUM(SALARY) |
++------------+-------------+
+| IT         |   270000.00 |
+| HR         |   199000.00 |
++------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql>
