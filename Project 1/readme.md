@@ -63,7 +63,7 @@ The **Customers** table stores information about customers, including their ID, 
 
 ### 📸 Output Screenshot
 
-![Customers Table Output](customers.png)
+![SQL query output showing customer records in a database table, with customer IDs, names, email addresses, and cities; displayed in a database client interface.](screenshors\customers.png)
 
 ---
 
