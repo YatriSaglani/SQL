@@ -185,7 +185,7 @@ These relationships help maintain data consistency and prevent records from refe
 ## 📁 Project Structure
 
 ```text
-DataDigger/
+project 1/
 │
 ├── DataDigger.txt
 ├── README.md
